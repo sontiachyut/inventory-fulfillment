@@ -7,7 +7,7 @@ Last updated: 2026-09-08
 - P0: specification, invariants, APIs, security gates, capacity methodology and acceptance-gated roadmap.
 - P1: Java 21/Spring Boot 4.1.1 local reference model, HTTP API, Maven wrapper, CI and synthetic demonstration.
 - P2: PostgreSQL 17.11, Flyway migrations, JDBC adapter and atomic transactional outbox. The in-memory adapter remains separately available.
-- 27 unit/HTTP plus 13 PostgreSQL/process integration tests pass locally with zero failures/errors/skips. Docker is now running and database tests actually executed. See [P2 evidence](validation/P2.md).
+- 30 unit/HTTP/helper plus 13 PostgreSQL/process integration tests pass locally with zero failures/errors/skips. Docker is now running and database tests actually executed. See [P2 evidence](validation/P2.md).
 - Independent-connection contention, durable replay, rollback, deadline/transition races, forced-process restart and two-API-process contention tested.
 - CI runs the same full Maven acceptance gate, then the HTTP walkthrough. Check its result against the exact pushed main revision, not Dependabot branches.
 

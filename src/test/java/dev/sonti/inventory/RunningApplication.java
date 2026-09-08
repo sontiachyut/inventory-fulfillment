@@ -40,11 +40,29 @@ final class RunningApplication implements AutoCloseable {
             } catch (Exception ignored) { /* The process exit/output below determines test failure. */ }
         });
         try {
-            long deadline = System.nanoTime() + Duration.ofSeconds(30).toNanos();
-            while (port == 0 && process.isAlive() && System.nanoTime() < deadline) Thread.sleep(20);
-            if (port == 0 || !process.isAlive()) throw new IllegalStateException("Application startup failed: " + output);
-            request("GET", "/actuator/health", null, 200);
-        } catch (Exception failure) { close(); throw failure; }
+            awaitReady(process::isAlive, () -> {
+                if (port == 0) return false;
+                var probe = HttpRequest.newBuilder(URI.create("http://127.0.0.1:" + port + "/actuator/health"))
+                        .timeout(Duration.ofSeconds(1)).GET().build();
+                try {
+                    var response = client.send(probe, HttpResponse.BodyHandlers.ofString());
+                    return response.statusCode() == 200 && "UP".equals(json.readTree(response.body()).path("status").asString());
+                } catch (java.io.IOException notReady) { return false; }
+            }, Duration.ofSeconds(30));
+        } catch (Exception | AssertionError failure) {
+            try { close(); } catch (Exception cleanup) { failure.addSuppressed(cleanup); }
+            throw new IllegalStateException("Application startup failed: " + output, failure);
+        }
+    }
+    static void awaitReady(java.util.function.BooleanSupplier alive, java.util.concurrent.Callable<Boolean> probe,
+            Duration timeout) throws Exception {
+        long deadline = System.nanoTime() + timeout.toNanos();
+        // A listening port precedes Spring readiness; retry only the startup health probe, never business requests.
+        while (alive.getAsBoolean() && System.nanoTime() < deadline) {
+            if (probe.call()) return;
+            Thread.sleep(20);
+        }
+        throw new IllegalStateException("Application did not become healthy before exit/deadline.");
     }
     JsonNode request(String method, String path, Object body, int expected) throws Exception {
         var request = HttpRequest.newBuilder(URI.create("http://127.0.0.1:" + port + path))
