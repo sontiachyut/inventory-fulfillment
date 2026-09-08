@@ -1,0 +1,615 @@
+{
+  "scanner": "Trivy 0.74.0",
+  "date": "2026-09-08T05:01:31.009895-07:00",
+  "artifact": "postgres@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73",
+  "platform": "linux/arm64",
+  "os": {
+    "Family": "alpine",
+    "Name": "3.24.1"
+  },
+  "scope": "Detected OS and language packages; package-vulnerability entries, not unique CVEs. No exploitability assessment. Not a deployment security clearance.",
+  "warnings": [
+    "Alpine 3.24 was not on the scanner EOL list; interpret coverage accordingly."
+  ],
+  "counts": {
+    "HIGH": 30,
+    "MEDIUM": 28,
+    "LOW": 14,
+    "UNKNOWN": 1,
+    "CRITICAL": 1
+  },
+  "findings": [
+    {
+      "target": "postgres@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73 (alpine 3.24.1)",
+      "id": "CVE-2026-14456",
+      "package": "libcrypto3",
+      "severity": "HIGH",
+      "installed": "3.5.7-r0",
+      "fixed": "3.5.8-r0"
+    },
+    {
+      "target": "postgres@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73 (alpine 3.24.1)",
+      "id": "CVE-2026-18798",
+      "package": "libcrypto3",
+      "severity": "MEDIUM",
+      "installed": "3.5.7-r0",
+      "fixed": "3.5.8-r0"
+    },
+    {
+      "target": "postgres@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73 (alpine 3.24.1)",
+      "id": "CVE-2026-63072",
+      "package": "libcrypto3",
+      "severity": "MEDIUM",
+      "installed": "3.5.7-r0",
+      "fixed": "3.5.8-r0"
+    },
+    {
+      "target": "postgres@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73 (alpine 3.24.1)",
+      "id": "CVE-2026-63076",
+      "package": "libcrypto3",
+      "severity": "MEDIUM",
+      "installed": "3.5.7-r0",
+      "fixed": "3.5.8-r0"
+    },
+    {
+      "target": "postgres@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73 (alpine 3.24.1)",
+      "id": "CVE-2026-14457",
+      "package": "libcrypto3",
+      "severity": "LOW",
+      "installed": "3.5.7-r0",
+      "fixed": "3.5.8-r0"
+    },
+    {
+      "target": "postgres@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73 (alpine 3.24.1)",
+      "id": "CVE-2026-54874",
+      "package": "libcrypto3",
+      "severity": "LOW",
+      "installed": "3.5.7-r0",
+      "fixed": "3.5.8-r0"
+    },
+    {
+      "target": "postgres@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73 (alpine 3.24.1)",
+      "id": "CVE-2026-63073",
+      "package": "libcrypto3",
+      "severity": "LOW",
+      "installed": "3.5.7-r0",
+      "fixed": "3.5.8-r0"
+    },
+    {
+      "target": "postgres@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73 (alpine 3.24.1)",
+      "id": "CVE-2026-63074",
+      "package": "libcrypto3",
+      "severity": "LOW",
+      "installed": "3.5.7-r0",
+      "fixed": "3.5.8-r0"
+    },
+    {
+      "target": "postgres@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73 (alpine 3.24.1)",
+      "id": "CVE-2026-63075",
+      "package": "libcrypto3",
+      "severity": "LOW",
+      "installed": "3.5.7-r0",
+      "fixed": "3.5.8-r0"
+    },
+    {
+      "target": "postgres@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73 (alpine 3.24.1)",
+      "id": "CVE-2026-75803",
+      "package": "libcrypto3",
+      "severity": "LOW",
+      "installed": "3.5.7-r0",
+      "fixed": "3.5.8-r0"
+    },
+    {
+      "target": "postgres@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73 (alpine 3.24.1)",
+      "id": "CVE-2026-14456",
+      "package": "libssl3",
+      "severity": "HIGH",
+      "installed": "3.5.7-r0",
+      "fixed": "3.5.8-r0"
+    },
+    {
+      "target": "postgres@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73 (alpine 3.24.1)",
+      "id": "CVE-2026-18798",
+      "package": "libssl3",
+      "severity": "MEDIUM",
+      "installed": "3.5.7-r0",
+      "fixed": "3.5.8-r0"
+    },
+    {
+      "target": "postgres@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73 (alpine 3.24.1)",
+      "id": "CVE-2026-63072",
+      "package": "libssl3",
+      "severity": "MEDIUM",
+      "installed": "3.5.7-r0",
+      "fixed": "3.5.8-r0"
+    },
+    {
+      "target": "postgres@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73 (alpine 3.24.1)",
+      "id": "CVE-2026-63076",
+      "package": "libssl3",
+      "severity": "MEDIUM",
+      "installed": "3.5.7-r0",
+      "fixed": "3.5.8-r0"
+    },
+    {
+      "target": "postgres@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73 (alpine 3.24.1)",
+      "id": "CVE-2026-14457",
+      "package": "libssl3",
+      "severity": "LOW",
+      "installed": "3.5.7-r0",
+      "fixed": "3.5.8-r0"
+    },
+    {
+      "target": "postgres@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73 (alpine 3.24.1)",
+      "id": "CVE-2026-54874",
+      "package": "libssl3",
+      "severity": "LOW",
+      "installed": "3.5.7-r0",
+      "fixed": "3.5.8-r0"
+    },
+    {
+      "target": "postgres@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73 (alpine 3.24.1)",
+      "id": "CVE-2026-63073",
+      "package": "libssl3",
+      "severity": "LOW",
+      "installed": "3.5.7-r0",
+      "fixed": "3.5.8-r0"
+    },
+    {
+      "target": "postgres@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73 (alpine 3.24.1)",
+      "id": "CVE-2026-63074",
+      "package": "libssl3",
+      "severity": "LOW",
+      "installed": "3.5.7-r0",
+      "fixed": "3.5.8-r0"
+    },
+    {
+      "target": "postgres@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73 (alpine 3.24.1)",
+      "id": "CVE-2026-63075",
+      "package": "libssl3",
+      "severity": "LOW",
+      "installed": "3.5.7-r0",
+      "fixed": "3.5.8-r0"
+    },
+    {
+      "target": "postgres@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73 (alpine 3.24.1)",
+      "id": "CVE-2026-75803",
+      "package": "libssl3",
+      "severity": "LOW",
+      "installed": "3.5.7-r0",
+      "fixed": "3.5.8-r0"
+    },
+    {
+      "target": "postgres@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73 (alpine 3.24.1)",
+      "id": "CVE-2026-53612",
+      "package": "libuuid",
+      "severity": "HIGH",
+      "installed": "2.42.1-r0",
+      "fixed": "2.42.3-r0"
+    },
+    {
+      "target": "postgres@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73 (alpine 3.24.1)",
+      "id": "CVE-2026-53613",
+      "package": "libuuid",
+      "severity": "HIGH",
+      "installed": "2.42.1-r0",
+      "fixed": "2.42.3-r0"
+    },
+    {
+      "target": "postgres@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73 (alpine 3.24.1)",
+      "id": "CVE-2026-53614",
+      "package": "libuuid",
+      "severity": "HIGH",
+      "installed": "2.42.1-r0",
+      "fixed": "2.42.3-r0"
+    },
+    {
+      "target": "postgres@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73 (alpine 3.24.1)",
+      "id": "CVE-2026-76642",
+      "package": "libuuid",
+      "severity": "HIGH",
+      "installed": "2.42.1-r0",
+      "fixed": "2.42.3-r0"
+    },
+    {
+      "target": "postgres@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73 (alpine 3.24.1)",
+      "id": "CVE-2026-78408",
+      "package": "libuuid",
+      "severity": "HIGH",
+      "installed": "2.42.1-r0",
+      "fixed": "2.42.3-r1"
+    },
+    {
+      "target": "postgres@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73 (alpine 3.24.1)",
+      "id": "CVE-2026-78409",
+      "package": "libuuid",
+      "severity": "HIGH",
+      "installed": "2.42.1-r0",
+      "fixed": "2.42.3-r0"
+    },
+    {
+      "target": "postgres@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73 (alpine 3.24.1)",
+      "id": "CVE-2026-78410",
+      "package": "libuuid",
+      "severity": "HIGH",
+      "installed": "2.42.1-r0",
+      "fixed": "2.42.3-r0"
+    },
+    {
+      "target": "postgres@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73 (alpine 3.24.1)",
+      "id": "CVE-2026-27456",
+      "package": "libuuid",
+      "severity": "MEDIUM",
+      "installed": "2.42.1-r0",
+      "fixed": "2.42.3-r0"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2026-39824",
+      "package": "golang.org/x/sys",
+      "severity": "UNKNOWN",
+      "installed": "v0.1.0",
+      "fixed": "0.44.0"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2025-68121",
+      "package": "stdlib",
+      "severity": "CRITICAL",
+      "installed": "v1.24.6",
+      "fixed": "1.24.13, 1.25.7, 1.26.0-rc.3"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2025-61726",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "installed": "v1.24.6",
+      "fixed": "1.24.12, 1.25.6"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2025-61729",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "installed": "v1.24.6",
+      "fixed": "1.24.11, 1.25.5"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2026-25679",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "installed": "v1.24.6",
+      "fixed": "1.25.8, 1.26.1"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2026-27145",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "installed": "v1.24.6",
+      "fixed": "1.25.11, 1.26.4"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2026-32280",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "installed": "v1.24.6",
+      "fixed": "1.25.9, 1.26.2"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2026-32281",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "installed": "v1.24.6",
+      "fixed": "1.25.9, 1.26.2"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2026-32283",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "installed": "v1.24.6",
+      "fixed": "1.25.9, 1.26.2"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2026-33811",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "installed": "v1.24.6",
+      "fixed": "1.25.10, 1.26.3"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2026-33814",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "installed": "v1.24.6",
+      "fixed": "1.25.10, 1.26.3"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2026-33818",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "installed": "v1.24.6",
+      "fixed": "1.25.13, 1.26.6, 1.27.0-rc.3"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2026-39820",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "installed": "v1.24.6",
+      "fixed": "1.25.10, 1.26.3"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2026-39821",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "installed": "v1.24.6",
+      "fixed": "1.25.13, 1.26.6, 1.27.0-rc.3"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2026-39822",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "installed": "v1.24.6",
+      "fixed": "1.25.12, 1.26.5, 1.27.0-rc.2"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2026-39836",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "installed": "v1.24.6",
+      "fixed": "1.25.10, 1.26.3"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2026-42499",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "installed": "v1.24.6",
+      "fixed": "1.25.10, 1.26.3"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2026-42504",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "installed": "v1.24.6",
+      "fixed": "1.25.11, 1.26.4"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2026-56853",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "installed": "v1.24.6",
+      "fixed": "1.25.13, 1.26.6, 1.27.0-rc.3"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2026-56858",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "installed": "v1.24.6",
+      "fixed": "1.25.13, 1.26.6, 1.27.0-rc.3"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2026-56859",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "installed": "v1.24.6",
+      "fixed": "1.25.13, 1.26.6, 1.27.0-rc.3"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2026-56860",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "installed": "v1.24.6",
+      "fixed": "1.25.13, 1.26.6, 1.27.0-rc.3"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2026-56862",
+      "package": "stdlib",
+      "severity": "HIGH",
+      "installed": "v1.24.6",
+      "fixed": "1.25.13, 1.26.6, 1.27.0-rc.3"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2025-47912",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "installed": "v1.24.6",
+      "fixed": "1.24.8, 1.25.2"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2025-58183",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "installed": "v1.24.6",
+      "fixed": "1.24.8, 1.25.2"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2025-58185",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "installed": "v1.24.6",
+      "fixed": "1.24.8, 1.25.2"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2025-58187",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "installed": "v1.24.6",
+      "fixed": "1.24.9, 1.25.3"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2025-58188",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "installed": "v1.24.6",
+      "fixed": "1.24.8, 1.25.2"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2025-58189",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "installed": "v1.24.6",
+      "fixed": "1.24.8, 1.25.2"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2025-61723",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "installed": "v1.24.6",
+      "fixed": "1.24.8, 1.25.2"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2025-61724",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "installed": "v1.24.6",
+      "fixed": "1.24.8, 1.25.2"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2025-61725",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "installed": "v1.24.6",
+      "fixed": "1.24.8, 1.25.2"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2025-61727",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "installed": "v1.24.6",
+      "fixed": "1.24.11, 1.25.5"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2025-61728",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "installed": "v1.24.6",
+      "fixed": "1.24.12, 1.25.6"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2025-61730",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "installed": "v1.24.6",
+      "fixed": "1.24.12, 1.25.6"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2026-27142",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "installed": "v1.24.6",
+      "fixed": "1.25.8, 1.26.1"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2026-32282",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "installed": "v1.24.6",
+      "fixed": "1.25.9, 1.26.2"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2026-32288",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "installed": "v1.24.6",
+      "fixed": "1.25.9, 1.26.2"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2026-32289",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "installed": "v1.24.6",
+      "fixed": "1.25.9, 1.26.2"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2026-39823",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "installed": "v1.24.6",
+      "fixed": "1.25.10, 1.26.3"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2026-39825",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "installed": "v1.24.6",
+      "fixed": "1.25.10, 1.26.3"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2026-39826",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "installed": "v1.24.6",
+      "fixed": "1.25.10, 1.26.3"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2026-42505",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "installed": "v1.24.6",
+      "fixed": "1.25.12, 1.26.5, 1.27.0-rc.2"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2026-42507",
+      "package": "stdlib",
+      "severity": "MEDIUM",
+      "installed": "v1.24.6",
+      "fixed": "1.25.11, 1.26.4"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2025-58186",
+      "package": "stdlib",
+      "severity": "LOW",
+      "installed": "v1.24.6",
+      "fixed": "1.24.8, 1.25.2"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "id": "CVE-2026-27139",
+      "package": "stdlib",
+      "severity": "LOW",
+      "installed": "v1.24.6",
+      "fixed": "1.25.8, 1.26.1"
+    }
+  ]
+}

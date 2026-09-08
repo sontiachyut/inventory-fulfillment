@@ -4,57 +4,58 @@ Reserve limited stock without losing track of quantity, expiry or repeated reque
 
 [![verify](https://github.com/sontiachyut/inventory-fulfillment/actions/workflows/ci.yml/badge.svg)](https://github.com/sontiachyut/inventory-fulfillment/actions/workflows/ci.yml)
 
-This is an incremental backend engineering project. **P1 is a runnable, local-only reference implementation.** It uses bounded in-memory state: restarting loses all data. It is not production-ready and has no measured distributed-scale results.
+An incremental backend engineering project. **P2 adds PostgreSQL persistence and transactional integration tests.** This is a local development system, not a production deployment or a large-scale performance claim.
 
 ## Run it
 
-Requirements: Java 21. Node.js 22+ and make are needed for the scripted demo. The Maven wrapper downloads a checksum-pinned Maven distribution.
+Requirements: Java 21 and a running Docker daemon. Node.js 22+ and make are needed for the scripted HTTP demo. The Maven wrapper downloads a checksum-pinned distribution.
 
 ```sh
 ./mvnw verify
 make demo
 ```
 
-The demo packages and starts a fresh application on a dynamic loopback port, runs HTTP assertions, then stops that process. No Docker, paid services, external merchant data or credentials are needed.
+Verification starts isolated PostgreSQL containers and tests the packaged API. The final HTTP walkthrough uses fresh in-memory state on a dynamic loopback port. Tests clean up their own containers/processes; no paid services or external merchant data are used.
 
-For manual API exploration:
+For persistent exploration, follow the [PostgreSQL setup](docs/POSTGRES.md). For the volatile reference implementation:
 
 ```sh
 make run
-# localhost:8082; local-demo profile, volatile state
+# localhost:8082; local-demo profile, state lost at shutdown
 ```
+
+Without Docker, `./mvnw test` runs only unit/in-memory HTTP tests—not the full acceptance gate.
 
 ## What works today
 
-- Stock creation and balances; positive, bounded quantities.
-- Idempotent reservations with payload-conflict detection.
-- Confirm/cancel/expire transitions with terminal-state protection.
-- Exact expiry-boundary handling, conservation checks and tenant-key separation.
-- REST endpoints, HTTP validation and deterministic state/concurrency tests.
+- Stock reservations with durable idempotency and confirm/cancel/expire transitions.
+- PostgreSQL row locks, conditional stock updates and database-enforced quantity conservation.
+- Transactional outbox: stock changes, reservation state and event insertion commit together.
+- 1,000 competing database reservation attempts, duplicate-key races, expiry races and rollback tests.
+- Packaged API restart recovery and contention between two independent API processes sharing one database.
 
-Tenant IDs in the demo are not authentication. The 1,000-task contention test runs in one process on 16 executor threads; it does not prove database or multi-instance correctness.
+Expiry sweeps are bounded and manually triggered in P2. Stock reads can conservatively include expired holds until a sweep. Tenant IDs are not authentication.
 
-## Planned architecture — not yet implemented
+## Next phases — not yet implemented
 
-Java/Spring Boot API → PostgreSQL transactional stock/reservations/outbox → Kafka and expiry/fulfillment workers. A simulated payment flow exercises late callbacks and compensation. React provides the operator timeline.
+Kafka outbox delivery, autonomous expiry/fulfillment workers, simulated payment callbacks and compensation, then a React operator timeline.
 
-PostgreSQL persistence, outbox delivery, Kafka, payment callbacks/compensation and the UI are future phases.
-No cloud resources have been provisioned.
+The outbox is persisted but **not published yet**. Authentication, operational hardening, backup/restore and representative load measurements remain open. No cloud resources have been provisioned. The pinned database image has [known security findings](docs/validation/IMAGE-SECURITY.md); public deployment is not approved.
 
 ## Engineering documents
 
 - [Specification: invariants, API, data model, security and scale targets](docs/SPEC.md)
 - [Phased roadmap and acceptance gates](docs/ROADMAP.md)
 - [Current status and precise next task](docs/STATUS.md)
-- [Architecture decision](docs/adr/0001-boundaries-and-proof.md)
-- [Demo walkthrough](docs/DEMO.md)
+- [Architecture boundaries](docs/adr/0001-boundaries-and-proof.md) and [PostgreSQL transaction decisions](docs/adr/0002-postgres-transactions.md)
+- [Reference demo](docs/DEMO.md) and [persistent local profile](docs/POSTGRES.md)
+- [P2 validation evidence](docs/validation/P2.md) and [historical P1 record](docs/validation/P1.md)
 - [Optional companion-project integration](docs/INTEGRATION.md)
-- [Validation record](docs/validation/P1.md)
 
 The companion project is [Verified Offers](https://github.com/sontiachyut/verified-offers). Each repository runs independently.
 
 ## Evidence before claims
 
-The roadmap includes database concurrency tests, event replay, failure injection, load tests and restore drills. Capacity numbers in the spec are **proposed workloads**, not achieved performance. Results will report hardware, configuration, errors and limitations.
+Database contention and restart tests establish specific correctness properties under synthetic fixtures. They do not establish throughput, latency SLOs, database disaster recovery or production availability. Capacity numbers in the spec are proposed workloads, not achieved performance.
 
 See [CONTRIBUTING](CONTRIBUTING.md) for the AI-assisted development/review workflow and [SECURITY](SECURITY.md) for deployment restrictions.

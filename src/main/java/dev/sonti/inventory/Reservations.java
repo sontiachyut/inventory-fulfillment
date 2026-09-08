@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.UUID;
 
 /** Single-process, bounded reference model. No durability or multi-instance guarantees. */
-public final class Reservations {
+public final class Reservations implements ReservationService {
     public enum Status { ACTIVE, CONFIRMED, CANCELLED, EXPIRED }
     private record StockKey(String tenantId, String sku) {
         StockKey { Input.identifier(tenantId); Input.identifier(sku); }

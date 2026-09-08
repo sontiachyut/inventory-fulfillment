@@ -21,8 +21,8 @@ public class Application {
     @Bean
     ApplicationRunner localDemoGuard(Environment environment) {
         return args -> {
-            if (!environment.matchesProfiles("local-demo")) {
-                throw new IllegalStateException("Only local-demo is implemented. Start with --spring.profiles.active=local-demo. Not for public deployment.");
+            if (environment.matchesProfiles("local-demo") == environment.matchesProfiles("postgres-local")) {
+                throw new IllegalStateException("Select exactly one of local-demo or postgres-local. Neither is for public deployment.");
             }
         };
     }

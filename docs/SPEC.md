@@ -1,6 +1,7 @@
 # Inventory Reservation & Fulfillment — product and engineering specification
 
 Status: approved project direction; implementation progresses only through acceptance gates.
+P2 clarification: ADR 0002 defines implemented persistence, locking, timestamp and local-profile semantics and supersedes preliminary P2 design details below. Authentication remains a predeployment gate; postgres-local is not a public production profile.
 Primary question: how do we prevent overselling and duplicate business effects when requests, workers and payment callbacks race?
 
 ## Product and boundaries
@@ -31,7 +32,7 @@ ACTIVE -- confirm before deadline --> CONFIRMED
 ACTIVE -- cancel before deadline --> CANCELLED
 ACTIVE -- deadline reached --> EXPIRED
 
-A read/command in P1 may materialize expiry; a clock-driven explicit sweep also exists. P2 uses a worker. Deadline correctness must not rely solely on worker timeliness.
+A read/command in P1 may materialize expiry; a clock-driven explicit sweep also exists. P2 expires the requested reservation and offers a bounded manual sweep; P3 adds an autonomous worker. P2 stock reads report materialized balances and may conservatively include expired holds until swept. Deadline correctness does not rely solely on worker timeliness.
 Terminal response retry: repeated confirm of CONFIRMED and cancel of CANCELLED is safe. Confirm of CANCELLED/EXPIRED is conflict. Cancel of CONFIRMED/EXPIRED is conflict.
 TTL range: 1–900 seconds in P1. Inject Clock for unit tests; use database time/consistent server policy at P2.
 A request replay may return the reservation's current state, not necessarily its creation response bytes; document this explicitly.
@@ -63,7 +64,7 @@ P1:
 
 Responses: stock snapshot; reservationId, tenantId, sku, quantity, expiresAt, status.
 400 invalid input, 404 unknown stock/reservation (including another tenant's ID), 409 insufficient stock/idempotency conflict/illegal transition, 503 bounded demo capacity.
-P2+ use verified tenant scope; accept idempotency header with documented normalization. API versioning/migration is explicit.
+Before shared deployment use verified tenant scope and an idempotency header with documented normalization/version migration. P2 postgres-local retains explicit untrusted demo tenant fields and the body idempotency key.
 P4 callback endpoint carries providerEventId, reservationId, outcome, timestamp and signature. Only simulated provider secrets stored outside repository; no real account integrations.
 
 ## Persistent model and transaction design (P2)
@@ -77,7 +78,7 @@ P4 payment_event unique(provider,event_id) with payload_hash; compensation uniqu
 Reserve transaction: claim/check idempotency key, atomically allocate stock with conditional UPDATE, insert reservation + outbox, commit. Duplicate key race re-reads winning committed record; failures roll back allocation.
 Transition transaction: lock reservation then stock consistently, check time/state, update balances/state/version and outbox together. Same lock order in worker and API. Reserve does not lock an existing reservation after stock.
 Expiry worker: bounded SELECT ... FOR UPDATE SKIP LOCKED batches; stock update and state transition in same transaction. Multiple workers must not double-release.
-Idempotency retention must exceed supported retry horizon (initial proposal 7 days); after expiry do not silently reuse keys while old business records exist. P2 ADR settles retention/tombstones.
+P2 retains successful idempotency records indefinitely; no key reuse/cleanup is implemented. A bounded retention/tombstone policy requires a later migration and must exceed the supported retry horizon.
 Use deadlock/serialization retry only around the full transaction, with bounded attempts and preserved idempotency.
 
 ## Quality and workload targets

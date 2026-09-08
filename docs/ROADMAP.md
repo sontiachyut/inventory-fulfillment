@@ -14,4 +14,6 @@ Phases are acceptance-gated. Sessions can span multiple days; dates follow actua
 
 Initial seven-session sprint: 1 specs/P1; 2 database schema + reserve; 3 transition/expiry concurrency; 4 outbox/Kafka; 5 payment simulator; 6 thin UI; 7 failure demos/docs. Auth hardening and P6 may extend beyond the sprint. Running both projects in parallel doubles effort; do one milestone at a time.
 
-First P2 task: settle transaction/idempotency/lock order in ADR; implement PostgreSQL tests for competing reservations and replay with changed payload before replacing the reference adapter.
+P2 functional gate completed: see [transaction decisions](adr/0002-postgres-transactions.md) and [validation](validation/P2.md). Deployment security remains open.
+
+Next P3 task: define publisher claim/recovery and duplicate-event semantics in an ADR, then write crash-after-publish/before-marking-delivered tests. Add autonomous expiry worker recovery without double stock release.

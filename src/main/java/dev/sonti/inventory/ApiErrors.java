@@ -9,6 +9,12 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 
 @RestControllerAdvice
 class ApiErrors {
+    @ExceptionHandler({org.springframework.dao.TransientDataAccessException.class,
+            org.springframework.jdbc.CannotGetJdbcConnectionException.class})
+    ProblemDetail databaseUnavailable(Exception error) {
+        return ProblemDetail.forStatusAndDetail(HttpStatusCode.valueOf(503),
+                "Database temporarily unavailable or busy. Retry with the same idempotency/source version.");
+    }
     @ExceptionHandler(DomainException.class)
     ProblemDetail domain(DomainException error) {
         return ProblemDetail.forStatusAndDetail(HttpStatusCode.valueOf(error.status()), error.getMessage());

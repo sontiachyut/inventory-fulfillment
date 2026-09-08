@@ -16,14 +16,14 @@ class DemoConfiguration {
 }
 
 @RestController
-@Profile("local-demo")
+@Profile({"local-demo", "postgres-local"})
 @RequestMapping("/api/v1")
 class ReservationApi {
     record CreateStock(String tenantId, String sku, int quantity) {
         CreateStock { Input.identifier(tenantId); Input.identifier(sku); Input.quantity(quantity); }
     }
-    private final Reservations reservations;
-    ReservationApi(Reservations reservations) { this.reservations = reservations; }
+    private final ReservationService reservations;
+    ReservationApi(ReservationService reservations) { this.reservations = reservations; }
 
     @PostMapping("/stock")
     Reservations.Stock create(@RequestBody CreateStock request) {
